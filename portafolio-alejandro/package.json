@@ -17,5 +17,9 @@
   },
   "devDependencies": {
     "astro": "^5.14.1"
-  }
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "packageManager": "npm@10.8.2"
 }
