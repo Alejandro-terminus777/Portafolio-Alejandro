@@ -1,0 +1,40 @@
+---
+import Experiencieitem from "./Experiencieitem.astro";
+
+const EXPERIENCE = [
+  {
+    date: "26 de Septiembre de 2025",
+    title: "Desarrollador Frontend Web Digital Ark",
+    description:
+      "Continúo trabajando como desarrollador Frontend, participando en proyectos desafiantes y colaborativos que me permiten seguir creciendo profesionalmente.",
+  },
+  {
+    date: "Diciembre 2024",
+    title: "Terminación de estudios en desarrollo de aplicaciones web móviles",
+    description:
+      "Finalizo mis estudios en el Tecnológico Minuto de Dios, a la espera de los exámenes obligatorios para obtener el título de Técnico en Desarrollo de Aplicaciones Web Móviles.",
+  },
+  {
+    date: "9 de septiembre de 2024",
+    title: "Comienzo en el desarrollo Frontend",
+    description:
+      "En esta fecha comencé a desempeñarme como desarrollador Frontend, trabajando en proyectos colaborativos y mejorando mis habilidades y conocimientos en el desarrollo web en la empresa Web Digital Ark.",
+  },
+  {
+    date: "Enero 2023",
+    title: "Técnico en Desarrollo de Aplicaciones Web Móviles",
+    description:
+      "Inicié mis estudios en el Tecnológico Minuto de Dios, donde aprendí los fundamentos de la programación y el desarrollo web.",
+  },
+];
+---
+
+<ol class="relative border-s border-gray-200 ">
+  {
+    EXPERIENCE.map((experience) => (
+      <li class="mb-10 ms-4">
+        <Experiencieitem {...experience} />
+      </li>
+    ))
+  }
+</ol>

@@ -1,0 +1,141 @@
+---
+import Link from "../icons/Link.astro";
+import GitHub from "../icons/Github.astro";
+import LinkButton from "./LinkButton.astro";
+
+const TAGS = {
+  NEXT: {
+    name: "Next.js",
+    class: "bg-black text-white",
+  },
+  TAILWIND: {
+    name: "Tailwind CSS",
+    class: "bg-[#003159] text-white",
+  },
+  DRUPAL: {
+    name: "Drupal",
+    class: "bg-[#3A87BC] text-white",
+  },
+  REACT: {
+    name: "React",
+    class: "bg-[#57c4db] text-white",
+  },
+  SCSS: {
+    name: "Sass",
+    class: "bg-[#ba68c8] text-white",
+  },
+  JS: {
+    name: "JavaScript",
+    class: "bg-[#ffcb00] text-white",
+  },
+  CSS: {
+    name: "CSS",
+    class: "bg-[#264de4] text-white",
+  },
+};
+
+const PROJECTS = [
+  {
+    title: "Alcanos de Colombia",
+    description:
+      "Proyecto desarrollado en Drupal, en el cual participé como frontend developer. Me encargué de la elaboración de los estilos generales del sitio y de la implementación de funcionalidades específicas, como el mapa de cobertura, que mostraba las zonas disponibles al hacer clic en cada región, y la calculadora de consumo, diseñada para estimar el gasto según los diferentes gasodomésticos seleccionados por el usuario.",
+    link: "https://alcanosesp.com/",
+    image: "/alcanos.webp",
+    tags: [TAGS.DRUPAL, TAGS.SCSS, TAGS.JS],
+  },
+  {
+    title: "Gelly Costa Rica",
+    description:
+      "Proyecto desarrollado en Next.js, en el cual participé como frontend developer. Me encargué de la elaboración de los estilos generales del sitio y de la implementación de funcionalidades como los filtros y el paginador del blog, un componente 360 con su respectivo color picker y diversos sliders distribuidos a lo largo de la web.",
+    link: "https://www.geely.cr/",
+    image: "/gelly.webp",
+    tags: [TAGS.NEXT, TAGS.SCSS],
+  },
+  {
+    title: "Web Digital Ark",
+    description:
+      "Proyecto desarrollado en Drupal, en el cual participé como frontend developer. Me encargué de la elaboración de los estilos generales del sitio y de la implementación de funcionalidades específicas, como la separación de componentes en bloques reutilizables, cada uno con un React independiente para optimizar el rendimiento y la experiencia del usuario, además de la configuración de un Webpack global preparado para futuras actualizaciones.",
+    link: "https://dev-webdigitalark.pantheonsite.io/",
+    image: "/wdark.webp",
+    tags: [TAGS.DRUPAL, TAGS.SCSS, TAGS.REACT],
+  },
+  {
+    title: "Amarilo",
+    description:
+      "Proyecto de vallas publicitarias para la empresa Amarilo, en el cual se solicitó una amplia cantidad de cortes en diferentes tamaños y formatos. Utilicé HTML y CSS para desarrollar un diseño responsivo que se adaptara a diversas resoluciones de pantalla, garantizando una experiencia de usuario óptima en todos los dispositivos.",
+    image: "/amarilo.webp",
+    tags: [TAGS.CSS],
+  },
+  {
+    title: "Tienda Inalde",
+    description:
+      "Proyecto desarrollado en WordPress, en el cual se me solicitó exclusivamente la implementación del diseño. Para ello utilicé Sass, lo que permitió estructurar y optimizar los estilos de forma más eficiente y escalable. Por el momento, el sitio no se encuentra desplegado.",
+    image: "/inalde.png",
+    tags: [TAGS.SCSS],
+  },
+  {
+    title: "Veinsa Usados",
+    description:
+      "Proyecto desarrollado en React, en el cual participé como frontend developer. Me encargué de la elaboración de los estilos generales de la página y de la implementación de funcionalidades solicitadas, como el apartado de favoritos gestionado con Redux. Por el momento, el sitio no se encuentra desplegado.",
+    image: "/veinsa.png",
+    tags: [TAGS.SCSS, TAGS.REACT],
+  },
+  {
+    title: "Prosa",
+    description:
+      "Mi participación en el proyecto se centró en la administración de usuarios de la empresa y en la elaboración de los estilos de estas pantallas utilizando Tailwind CSS. Implementé funcionalidades como la creación y eliminación de usuarios, la modificación y guardado de sus datos, así como la opción de aceptar o rechazar solicitudes de registro.",
+    image: "/prosa.png",
+    tags: [TAGS.TAILWIND, TAGS.REACT],
+  },
+];
+---
+
+<div class="flex flex-col gap-y-16">
+  {
+    PROJECTS.map(({ image, title, description, tags, link }) => (
+      <article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
+        <div class="w-full md:w-1/2">
+          <div class="relative h-full flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
+            <img
+              alt="Recién llegado vs 5 años en Nueva Zelanda"
+              class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105"
+              loading="lazy"
+              src={image}
+            />
+          </div>
+        </div>
+
+        <div class="w-full md:w-1/2 md:max-w-lg">
+          <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
+            {title}
+          </h3>
+          <div class="flex flex-wrap mt-2">
+            <ul class="flex flex-row mb-2 gap-x-2">
+              {tags.map((tag) => (
+                <li>
+                  <span
+                    class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 `}
+                  >
+                    {tag.name}
+                  </span>
+                </li>
+              ))}
+            </ul>
+
+            <div class="mt-2 text-gray-700 dark:text-gray-400">
+              {description}
+            </div>
+            <footer class="flex items-end justify-start mt-4 gap-x-4">
+              {link && (
+                <LinkButton href={link}>
+                  <Link class="size-4" />
+                  Preview
+                </LinkButton>
+              )}
+            </footer>
+          </div>
+        </div>
+      </article>
+    ))
+  }
+</div>
